@@ -1,0 +1,18 @@
+version: "3"
+services:
+  verdaccio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: verdaccio
+    container_name: verdaccio
+    network_mode: custom
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    expose:
+      - 4873/tcp
+      - 8080/tcp
+    ports:
+      - 4873/tcp
+      - 8080/tcp

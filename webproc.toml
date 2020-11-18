@@ -1,0 +1,15 @@
+ProgramArgs = [
+    "verdaccio",
+    "-c",
+    "/data/conf/config.yaml",
+    "-l",
+    "0.0.0.0:4873",
+]
+
+ConfigurationFiles = [
+    "/data/conf/config.yaml",
+    "/data/conf/htpasswd",
+    "/data/webproc.toml",
+]
+
+OnSave = "continue"

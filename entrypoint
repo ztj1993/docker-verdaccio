@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ ! -f /data/conf/config.yaml ]; then
+    cp /verdaccio/config.yaml /data/conf/config.yaml
+fi
+
+if [ ! -f /data/conf/htpasswd ]; then
+    touch /data/conf/htpasswd
+fi
+
+exec /usr/bin/dumb-init -- "$@"
