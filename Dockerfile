@@ -20,9 +20,10 @@ RUN mkdir -p /data \
   && mkdir -p /data/storage \
   && ln -s /verdaccio/bin/entrypoint /bin/entrypoint \
   && ln -s /verdaccio/bin/verdaccio /bin/verdaccio \
-  && chown -R node:root /data \
-  && chown -R node:root /verdaccio \
-  && chown node:root /verdaccio \
+  && chown node:root /data/conf \
+  && chown node:root /data/storage \
+  && chown node:root /verdaccio/bin/entrypoint \
+  && chown node:root /verdaccio/bin/verdaccio \
   && chmod +x /verdaccio/bin/entrypoint \
   && sed -i "s@/verdaccio/storage/data@/data/storage@" /verdaccio/config.yaml \
   && sed -i "s@/verdaccio/plugins@/data/plugins@" /verdaccio/config.yaml \
@@ -36,6 +37,6 @@ USER node
 
 EXPOSE 4873 8080
 
-ENTRYPOINT ["entrypoint"]
+ENTRYPOINT ["/bin/entrypoint"]
 
-CMD webproc /data/webproc.toml
+CMD ["/bin/webproc", "/data/webproc.toml"]
